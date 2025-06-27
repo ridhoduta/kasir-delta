@@ -56,7 +56,7 @@ const HomeKasir = () => {
   <div id="catalog-page" className="block">
     {/* Header */}
     <header className="bg-zinc-900 sticky top-0 z-40 shadow">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 py-1 flex justify-between items-center">
         <h1 className="text-xl font-bold mb-0 text-center md:text-left w-full">
             Delta Konveksi
           </h1>
@@ -65,34 +65,40 @@ const HomeKasir = () => {
 
     {/* Main Container */}
     <div className="max-w-7xl mx-auto px-4 py-6 space-y-8">
-      {/* Katalog */}
-      <section>
-        <h2 className="text-lg md:text-xl font-semibold bg-white text-zinc-800 px-4 py-3 rounded-t-lg shadow">
-          Katalog
-        </h2>
-        <div className="bg-white rounded-b-lg shadow px-4 py-6">
-          <BarangList data={barang} onTambah={handleTambah}  />
-        </div>
-      </section>
-
-      {/* Keranjang */}
-      <section>
-        <h2 className="text-lg md:text-xl font-semibold bg-white text-zinc-800 px-4 py-3 rounded-t-lg shadow">
-          Keranjang Pesanan
-        </h2>
-        <div className="bg-white text-zinc-800 rounded-b-lg shadow p-4 space-y-4">
-          <KeranjangList />
-          <div className="flex justify-end">
-            <button
-              onClick={() => lanjutPembayaran()}
-              className="bg-yellow-400 hover:bg-yellow-500 text-zinc-900 font-semibold px-6 py-3 rounded-full transition-all duration-200 shadow-md hover:shadow-lg"
-            >
-              Lanjut Ke Pembayaran
-            </button>
-          </div>
-        </div>
-      </section>
+  {/* Katalog */}
+  <section className="bg-white rounded-lg shadow overflow-hidden">
+    {/* Sticky Header */}
+    <div className="sticky top-0 bg-white z-10 px-4 py-3 border-b border-gray-200">
+      <h2 className="text-lg md:text-xl font-semibold text-zinc-800">
+        Katalog
+      </h2>
     </div>
+
+    {/* Scrollable Content */}
+    <div className="max-h-[60vh] overflow-y-auto px-4 py-4">
+      <BarangList data={barang} onTambah={handleTambah} />
+    </div>
+  </section>
+
+  {/* Keranjang */}
+  <section>
+    <h2 className="text-lg md:text-xl font-semibold bg-white text-zinc-800 px-4 py-3 rounded-t-lg shadow">
+      Keranjang Pesanan
+    </h2>
+    <div className="bg-white text-zinc-800 rounded-b-lg shadow p-4 space-y-4">
+      <KeranjangList />
+      <div className="flex justify-end">
+        <button
+          onClick={() => lanjutPembayaran()}
+          className="bg-yellow-400 hover:bg-yellow-500 text-zinc-900 font-semibold px-6 py-3 rounded-full transition-all duration-200 shadow-md hover:shadow-lg"
+        >
+          Lanjut Ke Pembayaran
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
   </div>
 </div>
 

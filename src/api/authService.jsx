@@ -3,7 +3,8 @@ import axios from 'axios';
 import { urlLogin } from './url';
 
 const api = axios.create({
-  baseURL: urlLogin
+  baseURL: urlLogin,
+  withCredentials: true,
 });
 
 api.interceptors.request.use((config) => {

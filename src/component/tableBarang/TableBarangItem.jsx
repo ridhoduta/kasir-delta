@@ -2,12 +2,12 @@ import React from 'react'
 
 const TableBarangItem = ({barang, nomor, deleteBarang, handleEdit}) => {
   const handleDelete = () => {
-    deleteBarang(barang.barang.barangid)
+    deleteBarang(barang.barangukuranid)
   };
 
   return (
     <>
-    <tr>
+    <tr className="hover:bg-gray-50 transition">
         <td>{nomor}</td>
         <td>{barang.barang.namabarang}</td> 
         <td>{barang.ukuran.ukuran}</td> 

@@ -15,6 +15,8 @@ const FormListBarang = () => {
   const [hargaBarang, setHargaBarang] = useState("")
   const [gambarBarang, setGambarBarang] = useState(null)
   const [errors, setErrors] = useState({})
+  const [showForm, setShowForm] = useState(false)
+
   const navigate = useNavigate()
   
   // get ukuran
@@ -126,102 +128,116 @@ const handleEdit = (barangukuranid) => {
     </header> 
 
   <div className="max-w-7xl mx-auto px-4 py-6">
-    <section className="bg-white text-zinc-800 p-6 rounded-lg shadow mb-8">
-      <h2 className="text-xl font-semibold mb-6">FORM TAMBAH BARANG</h2>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {errors.global && (
-          <div className="text-red-600 font-medium">{errors.global}</div>
+    <section className="bg-white text-zinc-800 rounded-lg shadow mb-8">
+  {/* Tombol Buka/Tutup */}
+  <div className="flex justify-between items-center px-6 py-4 border-b">
+    <h2 className="text-xl font-semibold">FORM TAMBAH BARANG</h2>
+    <button
+      onClick={() => setShowForm(!showForm)}
+      className="text-sm text-yellow-600 hover:text-yellow-700 font-medium"
+    >
+      {showForm ? "Tutup Form" : "Buka Form"}
+    </button>
+  </div>
+
+  {/* Isi Form (tampilkan jika showForm true) */}
+  {showForm && (
+    <form onSubmit={handleSubmit} className="space-y-6 px-6 py-4">
+      {errors.global && (
+        <div className="text-red-600 font-medium">{errors.global}</div>
+      )}
+
+      {/* Input Nama Barang */}
+      <div className="space-y-2">
+        <label htmlFor="namaBarang" className="block font-medium">
+          Nama Barang
+        </label>
+        <input
+          type="text"
+          id="namaBarang"
+          placeholder="masukkan nama barang"
+          value={namaBarang}
+          onChange={(e) => setNamaBarang(e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        />
+        {errors.namabarang && (
+          <p className="text-red-500 text-sm">{errors.namabarang}</p>
         )}
+      </div>
 
-        {/* Nama Barang */}
-        <div className="space-y-2">
-          <label htmlFor="namaBarang" className="block font-medium">
-            Nama Barang
-          </label>
-          <input
-            type="text"
-            id="namaBarang"
-            placeholder="masukkan nama barang"
-            value={namaBarang}
-            onChange={(e) => setNamaBarang(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
-          />
-          {errors.namabarang && (
-            <p className="text-red-500 text-sm">{errors.namabarang}</p>
-          )}
-        </div>
+      {/* Select Ukuran */}
+      <div className="space-y-2">
+        <label htmlFor="ukuran" className="block font-medium">
+          Ukuran Barang
+        </label>
+        <select
+          id="ukuran"
+          value={selectedUkuran?.ukuranid || ""}
+          onChange={(e) => {
+            const id = parseInt(e.target.value)
+            const selected = ukuran.find((item) => item.ukuranid === id)
+            setSelectedUkuran(selected)
+          }}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        >
+          <option value="">Pilih Ukuran</option>
+          {ukuran.map((item) => (
+            <option value={item.ukuranid} key={item.ukuranid}>
+              {item.ukuran}
+            </option>
+          ))}
+        </select>
+        {errors.ukuranid && (
+          <p className="text-red-500 text-sm">{errors.ukuranid}</p>
+        )}
+      </div>
 
-        {/* Ukuran Barang */}
-        <div className="space-y-2">
-          <label htmlFor="ukuran" className="block font-medium">
-            Ukuran Barang
-          </label>
-          <select
-            id="ukuran"
-            value={selectedUkuran?.ukuranid || ""}
-            onChange={(e) => {
-              const id = parseInt(e.target.value)
-              const selected = ukuran.find(item => item.ukuranid === id)
-              setSelectedUkuran(selected)
-            }}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
-          >
-            <option value="">Pilih Ukuran</option>
-            {ukuran.map((item) => (
-              <option value={item.ukuranid} key={item.ukuranid}>
-                {item.ukuran}
-              </option>
-            ))}
-          </select>
-          {errors.ukuranid && (
-            <p className="text-red-500 text-sm">{errors.ukuranid}</p>
-          )}
-        </div>
+      {/* Input Harga */}
+      <div className="space-y-2">
+        <label htmlFor="hargaBarang" className="block font-medium">
+          Harga Barang
+        </label>
+        <input
+          type="number"
+          id="hargaBarang"
+          placeholder="masukkan harga barang"
+          value={hargaBarang}
+          onChange={(e) => setHargaBarang(e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        />
+        {errors.harga && (
+          <p className="text-red-500 text-sm">{errors.harga}</p>
+        )}
+      </div>
 
-        {/* Harga Barang */}
-        <div className="space-y-2">
-          <label htmlFor="hargaBarang" className="block font-medium">
-            Harga Barang
-          </label>
-          <input
-            type="number"
-            id="hargaBarang"
-            placeholder="masukkan harga barang"
-            value={hargaBarang}
-            onChange={(e) => setHargaBarang(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
-          />
-          {errors.harga && (
-            <p className="text-red-500 text-sm">{errors.harga}</p>
-          )}
-        </div>
+      {/* Upload Gambar */}
+      <div className="space-y-2">
+        <label htmlFor="gambarBarang" className="block font-medium">
+          Gambar Barang
+        </label>
+        <input
+          type="file"
+          id="gambarBarang"
+          accept="image/*"
+          onChange={(e) => setGambarBarang(e.target.files[0])}
+          className="w-full bg-white file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-yellow-400 file:text-zinc-900 hover:file:bg-yellow-500"
+        />
+      </div>
 
-        {/* Gambar Barang */}
-        <div className="space-y-2">
-          <label htmlFor="gambarBarang" className="block font-medium">
-            Gambar Barang
-          </label>
-          <input
-            type="file"
-            id="gambarBarang"
-            accept="image/*"
-            onChange={(e) => setGambarBarang(e.target.files[0])}
-            className="w-full bg-white file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-yellow-400 file:text-zinc-900 hover:file:bg-yellow-500"
-          />
-        </div>
+      {/* Tombol Tambah */}
+      <div>
+        <button
+          type="submit"
+          id="tambahBtn"
+          className="bg-yellow-400 hover:bg-yellow-500 text-zinc-900 font-semibold px-6 py-2 rounded-full transition"
+        >
+          Tambah
+        </button>
+      </div>
+    </form>
+  )}
+</section>
 
-        {/* Tombol Submit */}
-        <div>
-          <button
-            type="submit"
-            id="tambahBtn"
-            className="bg-yellow-400 hover:bg-yellow-500 text-zinc-900 font-semibold px-6 py-2 rounded-full transition"
-          >
-            Tambah
-          </button>
-        </div>
-      </form>
-    </section>
 
     {/* Tabel List Barang */}
     <section className="bg-white text-zinc-800 p-6 rounded-lg shadow">

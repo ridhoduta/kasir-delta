@@ -12,7 +12,6 @@ const KonfirmasiPembayaran = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { keranjang } = useKeranjang();
   const [namaPemesan, setNamaPemesan] = useState('')
-  //  const { kosongkanKeranjang } = useKeranjang()
   
   
   const [alamat, setAlamat] = useState('')
@@ -42,7 +41,6 @@ const KonfirmasiPembayaran = () => {
         barangid: item.barangid,
         ukuran: item.ukuran,
         namapesanan: namaPemesan, // dari input
-        keterangan: item.keterangan,
         alamat: alamat,
         jumlah: item.jumlah,
         hargatotal: item.harga * item.jumlah

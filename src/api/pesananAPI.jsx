@@ -1,7 +1,8 @@
 import axios from "axios";
 import { url } from "./url";
 const api = axios.create({
-  baseURL: url
+  baseURL: url,
+  withCredentials: true,
 });
 
 // 2. Tambahkan interceptor untuk attach token

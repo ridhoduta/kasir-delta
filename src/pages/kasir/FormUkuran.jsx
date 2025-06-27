@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { deleteUkuranById, getUkurans} from '../../api/ukuranApi'
+import { deleteUkuranById, getUkurans, postUkurans} from '../../api/ukuranApi'
 import LoadingSpinner from '../../component/spinner/LoadingSpinner'
 import UkuranList from '../../component/Ukuran/UkuranList'
 import Sidebar from '../../component/sidebar/Sidebar'
@@ -41,12 +41,10 @@ const FormUkuran = () => {
       const formData = new FormData()
       formData.append('ukuran', ukuran)
 
-      const response = await fetch('http://localhost:8000/api/ukuran', {
-        method: 'POST',
-        body: formData
-      })
-
-      if (!response.ok) throw new Error('Gagal menambah ukuran.')
+      const response = await postUkurans(formData)
+      if (!response) {
+        alert('Gagal menambahkan ukuran')
+      }
 
       setUkuran('')
       fetchData()
