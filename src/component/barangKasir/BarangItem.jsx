@@ -11,7 +11,7 @@ const BarangItem = ({data, onTambah}) => {
       {/* Gambar */}
       <div className="aspect-square bg-gray-100">
         <img
-          src={data.gambar ? urlImage + data.gambar : "/api/placeholder/180/180"}
+          src={data.gambar ? urlImage + data.gambar : urlImage + '/gambar-barang/default.png'}
           alt={data.barang.namabarang}
           className="w-full h-full object-cover"
         />

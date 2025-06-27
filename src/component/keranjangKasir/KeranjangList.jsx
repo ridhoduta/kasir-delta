@@ -12,14 +12,13 @@ const KeranjangList = () => {
   return (
     <>
       {/* Input Search */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
       <div className="mb-4">
         <input
           type="text"
           placeholder="Cari nama barang..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full md:max-w-sm px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm text-zinc-800"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm text-zinc-800"
         />
       </div>
       <div>
@@ -33,7 +32,6 @@ const KeranjangList = () => {
             Kosongkan Keranjang
           </button>
         </div>
-      </div>
 
 
       {/* Tabel Keranjang */}

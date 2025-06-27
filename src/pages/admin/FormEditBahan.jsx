@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import SidebarAdmin from '../../component/sidebar/SidebarAdmin'
 import { useLocation } from 'react-router-dom'
 import { updateBahans } from '../../api/bahanApi'
 
@@ -31,7 +30,6 @@ const FormEditBahan = () => {
 
   return (
     <>
-      <SidebarAdmin />
       <div className="flex-1 min-h-screen md:ml-60 bg-gray-100 text-black">
 
   {/* Header */}

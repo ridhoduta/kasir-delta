@@ -3,7 +3,7 @@ import TableBarangItem from './TableBarangItem'
 
 const TableBarangList = ({ barang, deleteBarang, handleEdit }) => {
   const [searchTerm, setSearchTerm] = useState("")
-  console.log(barang)
+  // console.log(barang)
 
   const filteredBarang = barang.filter((item) => {
   const nama = item.barang?.namabarang?.toLowerCase() || ""

@@ -47,6 +47,6 @@ export const postEditBarangs = async (formData, barangid) => {
 };
 
 export const deletebarang = async (barangid) => {
-  const response = await api.delete(`/barang/${barangid}`);
+  const response = await api.delete(`/barang-ukuran/${barangid}`);
   return response;
 };

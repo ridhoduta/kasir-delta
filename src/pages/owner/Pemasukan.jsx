@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import SidebarOwner from '../../component/sidebar/SidebarOwner'
 import PemasukanList from '../../component/pemasukan/PemasukanList'
 import { deletePemasukan, getPemasukans } from '../../api/pemasukanApi';
 
@@ -36,7 +35,7 @@ const Pemasukan = () => {
 
   return (
     <>
-    <SidebarOwner/>
+    {/* <SidebarAdmin/> */}
     <div className="flex-1 min-h-screen md:ml-60 bg-gray-100 text-black">
       <header className="bg-zinc-900 sticky top-0 z-40 shadow text-white">
         <div className="max-w-7xl mx-auto px-4 py-4">

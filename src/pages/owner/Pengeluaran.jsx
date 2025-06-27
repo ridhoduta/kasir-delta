@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getPengeluarans } from '../../api/pengeluaran';
 import PengeluaranList from '../../component/pengeluaran/PengeluaranList';
-import SidebarOwner from '../../component/sidebar/SidebarOwner';
 
 const Pengeluaran = () => {
     const [pengeluaran, setPengeluaran] = useState([]);
@@ -21,7 +20,7 @@ const Pengeluaran = () => {
         }, []);
   return (
     <>
-    <SidebarOwner/>
+    {/* <SidebarAdmin/> */}
     <div className="flex-1 min-h-screen md:ml-60 bg-gray-100 text-black">
       <header className="bg-zinc-900 sticky top-0 z-40 shadow text-white">
         <div className="max-w-7xl mx-auto px-4 py-4">

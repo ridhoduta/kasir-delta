@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PesananList from '../../component/pesanan/PesananList';
 import { deletepesanan, getpesanans } from '../../api/pesananAPI';
-import SidebarAdmin from '../../component/sidebar/SidebarAdmin';
 import { useNavigate } from 'react-router-dom';
-// import style from '../../css/Admin.module.css'
 const Pesanan = () => {
     const [pesanan, setPesanan] = useState([]);
     const navigate = useNavigate()
@@ -42,7 +40,6 @@ const Pesanan = () => {
     
   return (
     <>
-    <SidebarAdmin/>
     <div className="flex-1 min-h-screen md:ml-60 bg-gray-100 text-black">
       {/* Header */}
       <header className="bg-zinc-900 shadow sticky top-0 z-40">

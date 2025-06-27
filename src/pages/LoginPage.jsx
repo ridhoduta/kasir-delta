@@ -22,8 +22,7 @@ const LoginPage = () => {
             const user = await getUser(); // dari authService
             
             if (user.role_id === 1) navigate('/home');
-            else if (user.role_id === 2) navigate('/pesanan');
-            else if (user.role_id === 3) navigate('/beranda-owner');
+            else if (user.role_id === 2) navigate('/beranda-owner');
         } catch (err) {
             alert('Login gagal: ' + err.message);
         } 
@@ -37,7 +36,6 @@ const LoginPage = () => {
                     <div className="loading-text">Mengalihkan...</div>
                     <div className="user-info">Halo, {user.name}</div>
                 </div>
-                <a href="">Halo</a>
             </div>
             
         );

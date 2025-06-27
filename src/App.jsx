@@ -18,15 +18,19 @@ import FormEditBahan from './pages/admin/FormEditBahan';
 import TailWindPages from './pages/TailWindPages';
 import KasirLayout from './layout/KasirLayout';
 import AdminLayout from './layout/AdminLayout';
-import OwnerLayout from './layout/OwnerLayout';
 import NotaPembayaran from './pages/kasir/NotaPembayaran';
 import FormUkuran from './pages/kasir/FormUkuran';
+import GuestRoute from './contexts/guestroute';
 function App() {
    return (
     <Router>
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<LoginPage />} />
+         <Route path="/" element={
+          <GuestRoute>
+            <LoginPage />
+          </GuestRoute>
+        } />
         <Route path="/tailwind" element={<TailWindPages />} />
 
         {/* Kasir Routes (Role 1) */}
@@ -45,15 +49,10 @@ function App() {
           <Route path="/bahan" element={<Bahan />} />
           <Route path="/tambah-bahan" element={<FormBahan />} />
           <Route path="/update-bahan" element={<FormEditBahan />} />
-        </Route>
-
-        {/* Owner Routes (Role 3) */}
-        <Route element={<ProtectedRoute allowedRoles={[3]}><OwnerLayout /></ProtectedRoute>}>
           <Route path="/beranda-owner" element={<Beranda />} />
           <Route path="/pemasukan" element={<Pemasukan />} />
           <Route path="/pengeluaran" element={<Pengeluaran />} />
         </Route>
-
       </Routes>
     </Router>
   );

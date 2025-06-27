@@ -1,6 +1,5 @@
 import React, {useEffect, useState } from 'react';
 import '../../ownerBeranda.css';
-import SidebarOwner from '../../component/sidebar/SidebarOwner';
 import { getPemasukans } from '../../api/pemasukanApi';
 import { getPengeluarans } from '../../api/pengeluaran';
 import { getpesanans } from '../../api/pesananAPI';
@@ -194,7 +193,7 @@ const weeklyMax = getMaxValue(monthlyWeeklyData, ['pemasukan', 'pengeluaran', 'b
 
   return (
     <>
-      <SidebarOwner />
+      {/* <SidebarAdmin /> */}
       <div className="flex-1 min-h-screen md:ml-60 bg-gray-100 text-black">
 
   {/* Header */}
