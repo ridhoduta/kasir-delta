@@ -1,0 +1,89 @@
+{
+  "pesanan": [
+    {
+      "pesananid": 1,
+      "totalharga": 50000,
+      "created_at": "2023-10-27T10:00:00Z",
+      "detail_pesanan": [
+        {
+          "namapesanan": "Baju Sablon",
+          "barang": {
+            "namabarang": "Kaos Polos"
+          },
+          "ukuran": "XL"
+        }
+      ],
+      "bahan": []
+    }
+  ],
+  "barang": [
+    {
+      "id": 1,
+      "namabarang": "Kemeja",
+      "harga": 10000
+
+    },
+    {
+      "id": 2,
+      "namabarang": "Kaos",
+      "harga": 10000
+    }
+  ],
+  "ukuran": [
+    {
+      "id": 1,
+      "barangId": 1,
+      "ukuran": "XL",
+      "harga_tambahan": 2000
+    },
+    {
+      "id": 2,
+      "barangId": 2,
+      "ukuran": "XXL",
+      "harga_tambahan": 2000
+    }
+  ],
+  "barang-ukuran": [
+    {
+      "id": 1,
+      "barangid": 1,
+      "barang": {
+        "namabarang": "Kemeja"
+      },
+      "ukuran": "XL",
+      "harga": 12000,
+      "gambar": "gambar-barang/default.png"
+    },
+    {
+      "id": 2,
+      "barangid": 2,
+      "barang": {
+        "namabarang": "Kaos"
+      },
+      "ukuran": "XXL",
+      "harga": 12000,
+      "gambar": "gambar-barang/default.png"
+    }
+  ],
+  "user": {
+    "id": 1,
+    "name": "Admin",
+    "email": "admin@example.com",
+    "role_id": 1
+  },
+  "login": [
+    {
+      "id": "mock",
+      "token": "fake-jwt-token-for-testing",
+      "user": {
+        "id": 1,
+        "name": "Admin",
+        "email": "admin@example.com",
+        "role_id": 1
+      }
+    }
+  ],
+  "logout": {
+    "message": "Logged out successfully"
+  }
+}
