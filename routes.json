@@ -1,0 +1,6 @@
+{
+  "/api/auth/login": "/login",
+  "/api/auth/user": "/user",
+  "/api/auth/logout": "/logout",
+  "/api/*": "/$1"
+}
