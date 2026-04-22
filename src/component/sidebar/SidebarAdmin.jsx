@@ -121,7 +121,7 @@ const SidebarAdmin = () => {
                 </Link>
                     
                   </li>
-                  <li>
+                  {/* <li>
                       <Link
                     to="/pemasukan"
                     className={`flex items-center px-4 py-2 rounded transition-all ${
@@ -171,7 +171,7 @@ const SidebarAdmin = () => {
                   </div>
                   <span>Bahan</span>
                 </Link>
-                </li>
+                </li> */}
                 <li>
                   <button
                   onClick={logout}
