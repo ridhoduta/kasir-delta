@@ -1,15 +1,25 @@
 import React, { useRef } from 'react'
 import Sidebar from '../../component/sidebar/Sidebar'
 import PesananBarangList from '../../component/nota/PesananBaranglist'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useKeranjang } from '../../contexts/KeranjangContext'
 import html2pdf from 'html2pdf.js'
 
 const NotaPembayaran = () => {
   const location = useLocation()
+  const navigate = useNavigate();
   const pesanan = location?.state?.pesanan
   const { keranjang } = useKeranjang()
   const notaRef = useRef()
+
+  React.useEffect(() => {
+    if (!pesanan) {
+      alert('Informasi pesanan tidak ditemukan.');
+      navigate('/');
+    }
+  }, [pesanan, navigate]);
+
+  if (!pesanan) return null;
 
   const today = new Date()
   const tanggalHariIni = today.toISOString().split('T')[0] // hasil: "2025-06-23"
@@ -31,13 +41,13 @@ const NotaPembayaran = () => {
     <>
       <Sidebar />
       <div className="flex flex-col items-center py-6 px-4 bg-zinc-900 min-h-screen">
-       <header className="bg-zinc-900 shadow sticky top-0 z-40">
-    <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 className="text-lg font-bold text-center w-full md:w-auto md:text-left">
-        Delta Konveksi
-      </h1>
-    </div>
-  </header>
+        <header className="bg-zinc-900 shadow sticky top-0 z-40">
+          <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 className="text-lg font-bold text-center w-full md:w-auto md:text-left">
+              Delta Konveksi
+            </h1>
+          </div>
+        </header>
         <div
           ref={notaRef}
           className="max-w-3xl w-full bg-white text-black p-6 rounded-lg shadow-lg space-y-6"
@@ -50,9 +60,8 @@ const NotaPembayaran = () => {
 
           {/* Client Info */}
           <div className="text-sm">
-            <p className="font-semibold">{pesanan.detail[0]?.namapesanan}</p>
-            <p>{pesanan.detail[0]?.keterangan}</p>
-            <p>{pesanan.detail[0]?.alamat}</p>
+            <p className="font-semibold">{pesanan?.detailPesanan?.[0]?.namapesanan || 'Guest'}</p>
+            <p>{pesanan?.detailPesanan?.[0]?.alamat || '-'}</p>
           </div>
 
           {/* Dates */}
@@ -102,12 +111,12 @@ const NotaPembayaran = () => {
             </div>
           </div>
         </div>
-            <button
-    onClick={generatePDF}
-    className="fixed bottom-6 right-6 px-5 py-3 bg-yellow-400 hover:bg-yellow-500 text-zinc-900 font-semibold rounded-full shadow-md transition-all z-50"
-  >
-    Download PDF
-  </button>
+        <button
+          onClick={generatePDF}
+          className="fixed bottom-6 right-6 px-5 py-3 bg-yellow-400 hover:bg-yellow-500 text-zinc-900 font-semibold rounded-full shadow-md transition-all z-50"
+        >
+          Download PDF
+        </button>
       </div>
     </>
   )
