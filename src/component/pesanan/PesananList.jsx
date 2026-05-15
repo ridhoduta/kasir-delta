@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PesananItem from './PesananItem'
 
-const PesananList = ({ data, deletePesanan, handleTambah }) => {
+const PesananList = ({ data, deletePesanan, handleTambah, updateShippingStatus }) => {
     const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 10
 
@@ -127,6 +127,7 @@ const PesananList = ({ data, deletePesanan, handleTambah }) => {
               <th className="px-4 py-2">Status Bahan</th>
               <th className="px-4 py-2">Total Harga</th>
               <th className="px-4 py-2">Tanggal</th>
+              <th className="px-4 py-2 text-center">Status Pengiriman</th>
               <th className="px-4 py-2">Action</th>
             </tr>
           </thead>
@@ -138,6 +139,7 @@ const PesananList = ({ data, deletePesanan, handleTambah }) => {
                 nomor={indexOfFirstItem + index + 1}
                 deletePesanan={deletePesanan}
                 handleTambah={handleTambah}
+                updateShippingStatus={updateShippingStatus}
               />
             )) : (
               <tr>

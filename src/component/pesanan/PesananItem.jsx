@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PesananItem = ({ data, nomor,  deletePesanan, handleTambah}) => {
+const PesananItem = ({ data, nomor,  deletePesanan, handleTambah, updateShippingStatus}) => {
   const handleDelete = () => {
     
     deletePesanan(data.pesananid)
@@ -54,6 +54,23 @@ const PesananItem = ({ data, nomor,  deletePesanan, handleTambah}) => {
       </td>
 
       <td className="px-4 py-2">{tanggal}</td>
+      <td className="px-4 py-2 text-center">
+        <select
+          value={data.pengiriman_status || 'menunggu'}
+          onChange={(e) => updateShippingStatus(data.pesananid, e.target.value)}
+          className={`px-2 py-1 text-xs font-medium rounded border focus:outline-none ${
+            data.pengiriman_status === 'selesai' ? 'bg-green-100 text-green-700 border-green-200' :
+            data.pengiriman_status === 'dikirim' ? 'bg-blue-100 text-blue-700 border-blue-200' :
+            data.pengiriman_status === 'diproses' ? 'bg-yellow-100 text-yellow-700 border-yellow-200' :
+            'bg-gray-100 text-gray-700 border-gray-200'
+          }`}
+        >
+          <option value="menunggu">Menunggu</option>
+          <option value="diproses">Diproses</option>
+          <option value="dikirim">Dikirim</option>
+          <option value="selesai">Selesai</option>
+        </select>
+      </td>
 
       <td className="px-4 py-2 space-x-2">
         <button

@@ -82,7 +82,6 @@ const KonfirmasiPembayaran = () => {
 
     } catch (error) {
       console.error('Gagal memproses pembayaran:', error.response?.data || error.message)
-      alert('Terjadi kesalahan saat memproses pembayaran. Silakan periksa koneksi Anda.')
     } finally {
       setIsLoading(false);
     }

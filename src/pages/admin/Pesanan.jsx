@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PesananList from '../../component/pesanan/PesananList';
-import { deletepesanan, getpesanans } from '../../api/pesananAPI';
+import { deletepesanan, getpesanans, updateShippingStatus } from '../../api/pesananAPI';
 import { useNavigate } from 'react-router-dom';
 const Pesanan = () => {
     const [pesanan, setPesanan] = useState([]);
@@ -36,6 +36,16 @@ const Pesanan = () => {
         console.error('Gagal menghapus pesanan:', error.response?.data || error.message);
       }
     };
+
+    const handleUpdateShippingStatus = async (id, status) => {
+      try {
+        await updateShippingStatus(id, status);
+        fetchData();
+        console.log("Status pengiriman berhasil diperbarui");
+      } catch (error) {
+        console.error('Gagal memperbarui status pengiriman:', error.response?.data || error.message);
+      }
+    };
     
     
   return (
@@ -57,6 +67,7 @@ const Pesanan = () => {
             data={pesanan}
             deletePesanan={deletePesanan}
             handleTambah={handleTambah}
+            updateShippingStatus={handleUpdateShippingStatus}
           />
         </div>
       </div>

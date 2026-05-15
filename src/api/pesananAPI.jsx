@@ -26,3 +26,8 @@ export const deletepesanan = async (id) => {
     const response = await api.delete(`/pesanan/${id}`);
     return response;
 };
+
+export const updateShippingStatus = async (id, status) => {
+    const response = await api.patch(`/pesanan/${id}/shipping-status`, { status });
+    return response;
+};
